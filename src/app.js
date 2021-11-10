@@ -14,12 +14,7 @@ const router = require('./router.js');
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/ImageUpload';
-const mongooseOptions = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-};
-mongoose.connect(dbURL, mongooseOptions, (err) => {
+mongoose.connect(dbURL, (err) => {
   if (err) {
     console.log('Could not connect to the database');
     throw err;
