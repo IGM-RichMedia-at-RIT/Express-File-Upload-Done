@@ -1,43 +1,49 @@
-// Pull in mongoose and create our empty file model object.
+/* This model file defines the mongoose schema and model for a 
+   database collection that can store files. The format is based
+   on the file object that is sent to our server by the browser
+   when the user uploads a file.
+*/
 const mongoose = require('mongoose');
 
-let FileModel = {};
-
-// Create our schema. This is based on the data pulled in by express-fileupload.
-// We can assume all of this data is required, as there will be an error from
-// fileupload before we create anything in this database. You could explicitly
-// define everything as required though.
 const FileSchema = new mongoose.Schema({
-  name: { // The name of our file as a string. We want this to be unique.
+  /* The name attribute that we recieve and will store defines
+     the actual filename of the file uploaded. This will be equal
+     to whatever the name of the file is on the users computer.
+     The name will include the file extension.
+  */
+  name: {
     type: String,
-    unique: true,
   },
-  data: { // The data of our file. This is stored as a byte array.
+
+  /* The data attribute is the actual data within the file. It
+     will be recieved by the server as a buffer of binary
+     information. A buffer is similar to an array. A collection
+     of information. If an image is uploaded, the buffer would
+     store metadata about the image as well as the pixel information.
+     If a text file is uploaded, it will contain metadata and
+     the character information.
+  */
+  data: {
     type: Buffer,
   },
-  size: { // The size of our file in bytes.
+
+  // The size attribute defines the size of the given file in bytes.
+  size: {
     type: Number,
   },
-  encoding: { // The encoding type of the image in the byte array.
-    type: String,
-  },
-  tempFilePath: { // The temp file path.
-    type: String,
-  },
-  truncated: { // If our file has been cut off.
-    type: Boolean,
-  },
-  mimetype: { // The type of data being stored.
-    type: String,
-  },
-  md5: { // The md5 hash of our file.
+  
+  /* The mimetype defines the actual type of file that is being
+     sent and stored. MIME types tell things like the browser how
+     to interpret the binary information stored in the data
+     attribute. For example, the data format of a png will be
+     very different from the data format of an mp3.
+  */ 
+  mimetype: {
     type: String,
   },
 });
 
-// Once we have setup the schema, we want to create our model.
+// Finally we construct a model based on our schema above.
 FileModel = mongoose.model('FileModel', FileSchema);
 
-// Export the model and schema.
-module.exports.FileModel = FileModel;
-module.exports.FileSchema = FileSchema;
+module.exports = FileModel;
