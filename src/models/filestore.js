@@ -1,4 +1,4 @@
-/* This model file defines the mongoose schema and model for a 
+/* This model file defines the mongoose schema and model for a
    database collection that can store files. The format is based
    on the file object that is sent to our server by the browser
    when the user uploads a file.
@@ -31,19 +31,19 @@ const FileSchema = new mongoose.Schema({
   size: {
     type: Number,
   },
-  
+
   /* The mimetype defines the actual type of file that is being
      sent and stored. MIME types tell things like the browser how
      to interpret the binary information stored in the data
      attribute. For example, the data format of a png will be
      very different from the data format of an mp3.
-  */ 
+  */
   mimetype: {
     type: String,
   },
 });
 
 // Finally we construct a model based on our schema above.
-FileModel = mongoose.model('FileModel', FileSchema);
+const FileModel = mongoose.model('FileModel', FileSchema);
 
 module.exports = FileModel;
