@@ -12,19 +12,18 @@
   "author": "Austin Willoughby",
   "license": "UNLICENSED",
   "devDependencies": {
-    "eslint": "^8.27.0",
+    "eslint": "^8.38.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.26.0",
-    "nodemon": "^2.0.20"
+    "eslint-plugin-import": "^2.27.5"
   },
   "dependencies": {
-    "body-parser": "^1.20.1",
+    "body-parser": "^1.20.2",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
-    "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
-    "express-handlebars": "^6.0.6",
-    "mongoose": "^6.7.2",
-    "serve-favicon": "^2.5.0"
+    "express-handlebars": "^7.0.4",
+    "mongoose": "^7.0.3",
+    "serve-favicon": "^2.5.0",
+    "xpress": "^2.4.6"
   }
 }
