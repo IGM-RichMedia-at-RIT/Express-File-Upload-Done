@@ -1,3 +1,7 @@
+/* This file is largely the same as app.js in most of our express
+   applications. The only differences have been commented.
+*/
+
 const express = require('express');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
@@ -6,6 +10,10 @@ const favicon = require('serve-favicon');
 const mongoose = require('mongoose');
 const expressHandlebars = require('express-handlebars');
 const path = require('path');
+
+/* We need to include the express-fileupload middleware library
+   (which we have installed through package.json).
+*/
 const fileUpload = require('express-fileupload');
 
 const router = require('./router.js');
@@ -23,6 +31,12 @@ mongoose.connect(dbURL).catch((err) => {
 const app = express();
 app.use(compression());
 
+/* We then give the express-fileupload middleware to our express
+   application. This middleware works very similarly to body-parser.
+   It will detect when form-data with files has been sent to our
+   server. When it sees any, it will place them in the req.files
+   object with each request.
+*/
 app.use(fileUpload());
 
 app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
