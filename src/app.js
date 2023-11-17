@@ -4,7 +4,6 @@
 
 const express = require('express');
 const compression = require('compression');
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 const mongoose = require('mongoose');
@@ -49,7 +48,6 @@ app.engine('handlebars', expressHandlebars.engine({
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/../views`);
 app.disable('x-powered-by');
-app.use(cookieParser());
 
 app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
 
