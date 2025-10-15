@@ -4,7 +4,6 @@
 
 const express = require('express');
 const compression = require('compression');
-const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 const mongoose = require('mongoose');
 const expressHandlebars = require('express-handlebars');
@@ -39,7 +38,7 @@ app.use(compression());
 app.use(fileUpload());
 
 app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
-app.use(bodyParser.urlencoded({
+app.use(express.urlencoded({
   extended: true,
 }));
 app.engine('handlebars', expressHandlebars.engine({
