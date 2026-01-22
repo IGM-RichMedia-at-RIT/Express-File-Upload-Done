@@ -20,7 +20,7 @@
     "serve-favicon": "^2.5.1"
   },
   "devDependencies": {
-    "eslint": "^8.57.1",
+    "eslint": "^9.39.2",
     "nodemon": "^3.1.11"
   }
 }
